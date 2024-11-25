@@ -19,16 +19,20 @@ export default function Home() {
 
   return (
     <table>
+     <thead>
       <tr>
-        <td>Nome</td>
-        <td>E-mail</td>
+        <th>Nome</th>
+        <th>E-mail</th>
       </tr>
+     </thead>
+     <tbody>
       {usuarios.map((usuario) =>
         <tr key={usuario.id}>
           <td>{usuario.nome}</td>
           <td>{usuario.email}</td>
         </tr>
       )}
+      </tbody>
     </table>
   );
 }
