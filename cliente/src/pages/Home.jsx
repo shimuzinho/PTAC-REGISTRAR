@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import style from '../../assets/styles/home.module.css'
 
 export default function Home() {
-
+  const navigate = useNavigate();
   const [usuarios, setUsuarios] = useState([]);
+  
+  const irParaRegistar = () => {
+    navigate('/registrar');
+  };
 
   useEffect(() => {
     const buscarUsuario = async () => {
@@ -18,21 +24,24 @@ export default function Home() {
   }, [])
 
   return (
-    <table>
-     <thead>
-      <tr>
-        <th>Nome</th>
-        <th>E-mail</th>
-      </tr>
-     </thead>
-     <tbody>
-      {usuarios.map((usuario) =>
-        <tr key={usuario.id}>
-          <td>{usuario.nome}</td>
-          <td>{usuario.email}</td>
-        </tr>
-      )}
-      </tbody>
-    </table>
+    <>
+      <table className={style.containerTabela}>
+        <thead className={style.cabecaTabela}>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+          </tr>
+        </thead>
+        <tbody className={style.corpoTabela}>
+          {usuarios.map((usuario) =>
+            <tr key={usuario.id}>
+              <td>{usuario.nome}</td>
+              <td>{usuario.email}</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+      <button className={style.button} onClick={irParaRegistar}>Ir para Registar</button>
+    </>
   );
 }

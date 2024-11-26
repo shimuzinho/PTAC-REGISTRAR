@@ -1,0 +1,51 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.containerTabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.cabecaTabela {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.cabecaTabela th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.corpoTabela tr {
+  transition: 0.25s;
+}
+
+.corpoTabela tr:hover {
+  background-color: #ddd;
+  transition: 0.25s;
+}
+
+.corpoTabela td {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+}
+
+.button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
