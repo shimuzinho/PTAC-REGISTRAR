@@ -10,6 +10,17 @@ export default function Home() {
     navigate('/registrar');
   };
 
+  const removerPessoa = async (pessoa) => {
+    try {
+      await fetch(`http://localhost:3000/usuarios/${pessoa.id}`, {
+        method: 'DELETE',
+      });
+    } catch (error) {
+      console.error(error);
+      alert('Erro na ligação com o servidor');
+    }
+  }
+
   useEffect(() => {
     const buscarUsuario = async () => {
       try {
@@ -21,7 +32,7 @@ export default function Home() {
       }
     }
     buscarUsuario();
-  }, [])
+  }, [usuarios])
 
   return (
     <>
@@ -30,6 +41,7 @@ export default function Home() {
           <tr>
             <th>Nome</th>
             <th>E-mail</th>
+            <th>Função</th>
           </tr>
         </thead>
         <tbody className={style.corpoTabela}>
@@ -37,6 +49,7 @@ export default function Home() {
             <tr key={usuario.id}>
               <td>{usuario.nome}</td>
               <td>{usuario.email}</td>
+              <td><button className={style.button} onClick={() => removerPessoa(usuario)}>Remover</button></td>
             </tr>
           )}
         </tbody>
