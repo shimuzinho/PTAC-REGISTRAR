@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import style from '../../assets/styles/registro.module.css';
 
 export default function Registrar() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const navigate = useNavigate();
 
   const registrarPessoa = async (pessoaNova) => {
@@ -15,7 +15,7 @@ export default function Registrar() {
       });
       reset();
       alert('Registro realizado');
-      navigate('/')
+      navigate('/');
     } catch (err) {
       console.error(err);
       alert('Ocorreu um erro no registro');
@@ -29,17 +29,23 @@ export default function Registrar() {
       <label htmlFor="nome" className={style.label}>Nome:</label>
       <input 
         type="text" 
-        {...register('nome')} 
+        {...register('nome', { required: 'O nome é obrigatório.'})}
         name="nome" 
         className={style.input} 
       />
+      {
+        errors.nome && <p className={style.error}>{errors.nome.message}</p>
+      }
       <label htmlFor="email" className={style.label}>E-mail:</label>
       <input 
         type="email" 
-        {...register('email')} 
+        {...register('email', { required: 'O e-mail é obrigatório.'})} 
         name="email" 
         className={style.input} 
       />
+      {
+        errors.email && <p className={style.error}>{errors.email.message}</p>
+      }
       <button className={style.button}>Registrar</button>
     </form>
     </>      

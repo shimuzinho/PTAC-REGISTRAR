@@ -5,11 +5,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-let usuarios = [{
-    id: 1,
-    nome: 'Pedro',
-    email: 'rossinipedro613@gmail.com'
-}];
+let usuarios = [];
 
 app.post('/usuarios', (req, res) => {
     const { nome, email } = req.body;
